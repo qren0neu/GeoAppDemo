@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.qiren.geoapp.tensorflow.fragments.MainFragment"
+        android:label="Main Fragment"
+        tools:layout="@layout/main_frag_layout" >
+
+        <action
+            android:id="@+id/action_main_to_permission"
+            app:destination="@id/permissions_fragment" />
+
+        <action
+            android:id="@+id/action_main_to_camera"
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/permissions_fragment"
+            app:popUpToInclusive="true" />
+
+
+        <action
+            android:id="@+id/action_main_to_image"
+            app:destination="@id/image_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/permissions_fragment"
+        android:name="com.qiren.geoapp.tensorflow.fragments.PermissionsFragment"
+        android:label="PermissionsFragment" >
+
+        <action
+            android:id="@+id/action_permissions_to_camera"
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/permissions_fragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_permissions_to_main"
+            app:destination="@id/mainFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/camera_fragment"
+        android:name="com.qiren.geoapp.tensorflow.fragments.CameraFragment"
+        android:label="CameraFragment" >
+
+
+        <action
+            android:id="@+id/action_camera_to_permissions"
+            app:destination="@id/permissions_fragment"
+            app:popUpTo="@id/camera_fragment"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/image_fragment"
+        android:name="com.qiren.geoapp.tensorflow.fragments.ImageFragment"
+        android:label="ImageFragment"
+        />
+</navigation>
