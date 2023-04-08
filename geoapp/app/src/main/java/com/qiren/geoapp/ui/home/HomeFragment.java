@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.qiren.geoapp.databinding.FragmentHomeBinding;
 import com.qiren.geoapp.tensorflow.MainActivity;
+import com.qiren.geoapp.tensorflow.activities.LoginActivity;
+import com.qiren.geoapp.tensorflow.services.UserService;
 
 public class HomeFragment extends Fragment {
 
@@ -37,7 +39,22 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.tensorflowButton.setOnClickListener(v -> {
             Intent intent = new Intent();
+            if (!UserService.INSTANCE.checkLogin()) {
+                intent.setClass(getContext(), LoginActivity.class);
+                getActivity().startActivity(intent);
+                return;
+            }
             intent.setClass(getContext(), MainActivity.class);
+            getActivity().startActivity(intent);
+        });
+        binding.pytorchButton.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            if (!UserService.INSTANCE.checkLogin()) {
+                intent.setClass(getContext(), LoginActivity.class);
+                getActivity().startActivity(intent);
+                return;
+            }
+            intent.setClass(getContext(), com.qiren.geoapp.pytorch.MainActivity.class);
             getActivity().startActivity(intent);
         });
     }

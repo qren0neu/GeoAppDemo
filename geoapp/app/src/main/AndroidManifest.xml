@@ -40,6 +40,8 @@
         </activity>
         <activity android:name=".tensorflow.MainActivity" />
         <activity android:name=".tensorflow.activities.LoginActivity" />
+        <activity android:name=".pytorch.MainActivity" />
+        <activity android:name=".pytorch.ObjectDetectionActivity" />
 
     </application>
 
